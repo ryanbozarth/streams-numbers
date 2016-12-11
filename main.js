@@ -1,8 +1,10 @@
-var Numbers = require('./numbers');
+var Numbers = require('./read');
+var Filter = require('./filter');
 var num = new Numbers();
-// var Cache = require('./cache');
-//var cache = new Cache('alpha1');
+var filter = new Filter();
 
-num.on('data', function(chunk) {
-  console.log(chunk.toString());
-})
+
+num.pipe(filter);
+// num.on('data', function(chunk) {
+//   console.log(chunk.toString());
+// })
