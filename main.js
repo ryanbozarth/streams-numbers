@@ -1,10 +1,18 @@
-var Numbers = require('./read');
+var Read = require('./read');
 var Filter = require('./filter');
-var num = new Numbers();
+var Log = require('./write');
+var read = new Read();
 var filter = new Filter();
+var log = new Log();
 
 
-num.pipe(filter);
+read.pipe(filter).pipe(log);
+
+
+
+
+
+
 // num.on('data', function(chunk) {
 //   console.log(chunk.toString());
 // })

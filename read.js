@@ -1,18 +1,16 @@
 const stream = require('stream');
 
-//readable stream produce list of random numbers
-
-function Numbers(start, end, options) {
+function Read(start, end, options) {
   stream.Readable.call(this, start, end, options);
   this._start = 0;
   this._end = 10;
   this._curr = this._start;
 }
 
-Numbers.prototype = Object.create(stream.Readable.prototype);
-Numbers.prototype.constructor = Numbers;
+Read.prototype = Object.create(stream.Readable.prototype);
+Read.prototype.constructor = Read;
 
-Numbers.prototype._read = function() {
+Read.prototype._read = function() {
   const buf = new Buffer(String(Math.random() * 200));
   this.push(buf);
   this._curr++;
@@ -22,4 +20,4 @@ Numbers.prototype._read = function() {
 };
 
 
-module.exports = Numbers;
+module.exports = Read;
